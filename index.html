@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#ffffff" />
+  <title>EasyData Admin Console</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand-row"><a class="brand" href="#dashboard" aria-label="EasyData home">easydata<span>.</span></a><button class="icon-btn sidebar-close" id="closeSidebar" aria-label="Close navigation">×</button></div>
+      <nav class="nav-list" aria-label="Main navigation">
+        <button class="nav-item active" data-page="dashboard"><span class="nav-icon">⌂</span>Dashboard</button>
+        <button class="nav-item" data-page="orders"><span class="nav-icon">▤</span>Orders</button>
+        <button class="nav-item" data-page="products"><span class="nav-icon">⬡</span>Products &amp; Pricing</button>
+        <button class="nav-item" data-page="routing"><span class="nav-icon">⤳</span>Product Routing</button>
+        <button class="nav-item" data-page="payments"><span class="nav-icon">▣</span>Payment Collections</button>
+        <button class="nav-item" data-page="sms"><span class="nav-icon">▱</span>SMS &amp; Announcements</button>
+        <button class="nav-item" data-page="ussd"><span class="nav-icon">▥</span>USSD Metrics</button>
+        <button class="nav-item" data-page="sales"><span class="nav-icon">⌁</span>Sales Metrics</button>
+        <button class="nav-item" data-page="accounts"><span class="nav-icon">♙</span>Accounts</button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="profile" id="sidebarAccountLink" role="button" tabindex="0" aria-label="Open Accounts"><div class="avatar">A</div><div><strong>Admin</strong><small>Owner</small></div><span class="profile-more">›</span></div>
+        <button class="logout" id="logoutBtn"><span>↪</span>Log out</button>
+      </div>
+    </aside>
+
+    <main class="main-area">
+      <header class="topbar">
+        <button class="icon-btn menu-btn" id="openSidebar" aria-label="Open navigation">☰</button>
+        <span class="mobile-brand">easydata<span>.</span></span>
+        <div class="topbar-actions">
+          <button class="primary-btn quick-order-btn" id="quickOrderBtn"><span>＋</span> Insert Order</button>
+          
+          <button class="avatar top-avatar" id="profileBtn" aria-label="Admin profile">A</button>
+        </div>
+      </header>
+      <div id="pageContent" class="page-content" tabindex="-1"></div>
+    </main>
+  </div>
+  <div class="overlay" id="overlay"></div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <dialog class="modal" id="quickOrderModal">
+    <form method="dialog" id="quickOrderForm" novalidate>
+      <div class="modal-head"><div><p class="eyebrow">NEW TRANSACTION</p><h2>Create insert order</h2></div><button class="icon-btn" value="cancel" aria-label="Close">×</button></div>
+      <div class="segmented" role="tablist" aria-label="Order type"><button type="button" class="segment active" data-order-mode="single">Single order</button><button type="button" class="segment" data-order-mode="bulk">Bulk order</button><button type="button" class="segment" data-order-mode="excel">Upload Excel</button></div>
+      <div id="quickOrderFields"></div>
+      <div class="modal-actions"><button class="secondary-btn" value="cancel">Cancel</button><button class="primary-btn" id="submitQuickOrder" value="default">Create order <span>→</span></button></div>
+    </form>
+  </dialog>
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
